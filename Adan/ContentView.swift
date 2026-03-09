@@ -1,19 +1,15 @@
 import SwiftUI
 
-struct PrayerTime {
-    let name: String
-    let time: String
-}
 
 struct ContentView: View {
 
-    let prayers: [PrayerTime] = [
-        PrayerTime(name: "Fajr",    time: "05:12"),
-        PrayerTime(name: "Dhuhr",   time: "12:45"),
-        PrayerTime(name: "Asr",     time: "15:58"),
-        PrayerTime(name: "Maghrib", time: "18:32"),
-        PrayerTime(name: "Isha",    time: "20:04")
-    ]
+    @State private var prayers: [PrayerTime] = []
+    @State private var isLoading = true
+    @State private var errorMessage: String? = nil
+    
+    var nextPrayer: PrayerTime? {
+        prayers.first { $0.time > Date() }
+    }
 
     var body: some View {
         VStack(spacing: 16) {
@@ -22,17 +18,40 @@ struct ContentView: View {
                 .fontWeight(.semibold)
                 .padding(.top)
 
-            ForEach(prayers, id: \.name) { prayer in
-                HStack {
-                    Text(prayer.name)
-                    Spacer()
-                    Text(prayer.time)
-                        .foregroundStyle(.secondary)
+            if isLoading {
+                Spacer()
+                ProgressView()
+                Spacer()
+            } else if let error = errorMessage {
+                Spacer()
+                Text(error)
+                    .foregroundStyle(.red)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                Spacer()
+            } else {
+                ForEach(prayers, id: \.name) { prayer in
+                    HStack {
+                        Text(prayer.name)
+                            .fontWeight(prayer.name == nextPrayer?.name ? .bold : .regular)
+                        Spacer()
+                        Text(prayer.time.formatted(date: .omitted, time: .shortened))
+                            .foregroundStyle(prayer.name == nextPrayer?.name ? .primary : .secondary)
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
+                Spacer()
             }
-
-            Spacer()
+        }
+        .task {
+            do {
+                // Casablanca coordinates
+                prayers = try await fetchPrayerTimes(latitude: 33.5731, longitude: -7.5898)
+                isLoading = false
+            } catch {
+                errorMessage = "Could not load prayer times."
+                isLoading = false
+            }
         }
     }
 }

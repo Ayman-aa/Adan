@@ -6,14 +6,76 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CEDBC7F52F5E90D100EC44F6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDBC7F42F5E90D000EC44F6 /* WidgetKit.framework */; };
+		CEDBC7F72F5E90D100EC44F6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDBC7F62F5E90D100EC44F6 /* SwiftUI.framework */; };
+		CEDBC8042F5E90D300EC44F6 /* AdanWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CEDBC7F22F5E90D000EC44F6 /* AdanWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CEDBC8022F5E90D300EC44F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE896C372F5C3E3100148197 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEDBC7F12F5E90D000EC44F6;
+			remoteInfo = AdanWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CEDBC8092F5E90D300EC44F6 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CEDBC8042F5E90D300EC44F6 /* AdanWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CE896C3F2F5C3E3100148197 /* Adan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEDBC7F22F5E90D000EC44F6 /* AdanWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AdanWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEDBC7F42F5E90D000EC44F6 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CEDBC7F62F5E90D100EC44F6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CEDBC8052F5E90D300EC44F6 /* Exceptions for "AdanWidget" folder in "AdanWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CEDBC7F12F5E90D000EC44F6 /* AdanWidgetExtension */;
+		};
+		CEDBC80D2F5E919400EC44F6 /* Exceptions for "Adan" folder in "AdanWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models.swift,
+				PrayerService.swift,
+			);
+			target = CEDBC7F12F5E90D000EC44F6 /* AdanWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CE896C412F5C3E3100148197 /* Adan */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CEDBC80D2F5E919400EC44F6 /* Exceptions for "Adan" folder in "AdanWidgetExtension" target */,
+			);
 			path = Adan;
+			sourceTree = "<group>";
+		};
+		CEDBC7F82F5E90D100EC44F6 /* AdanWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CEDBC8052F5E90D300EC44F6 /* Exceptions for "AdanWidget" folder in "AdanWidgetExtension" target */,
+			);
+			path = AdanWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +88,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEDBC7EF2F5E90D000EC44F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEDBC7F72F5E90D100EC44F6 /* SwiftUI.framework in Frameworks */,
+				CEDBC7F52F5E90D100EC44F6 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				CE896C412F5C3E3100148197 /* Adan */,
+				CEDBC7F82F5E90D100EC44F6 /* AdanWidget */,
+				CEDBC7F32F5E90D000EC44F6 /* Frameworks */,
 				CE896C402F5C3E3100148197 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +114,18 @@
 			isa = PBXGroup;
 			children = (
 				CE896C3F2F5C3E3100148197 /* Adan.app */,
+				CEDBC7F22F5E90D000EC44F6 /* AdanWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CEDBC7F32F5E90D000EC44F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEDBC7F42F5E90D000EC44F6 /* WidgetKit.framework */,
+				CEDBC7F62F5E90D100EC44F6 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +138,12 @@
 				CE896C3B2F5C3E3100148197 /* Sources */,
 				CE896C3C2F5C3E3100148197 /* Frameworks */,
 				CE896C3D2F5C3E3100148197 /* Resources */,
+				CEDBC8092F5E90D300EC44F6 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CEDBC8032F5E90D300EC44F6 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				CE896C412F5C3E3100148197 /* Adan */,
@@ -69,6 +154,28 @@
 			productName = Adan;
 			productReference = CE896C3F2F5C3E3100148197 /* Adan.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CEDBC7F12F5E90D000EC44F6 /* AdanWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEDBC8062F5E90D300EC44F6 /* Build configuration list for PBXNativeTarget "AdanWidgetExtension" */;
+			buildPhases = (
+				CEDBC7EE2F5E90D000EC44F6 /* Sources */,
+				CEDBC7EF2F5E90D000EC44F6 /* Frameworks */,
+				CEDBC7F02F5E90D000EC44F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CEDBC7F82F5E90D100EC44F6 /* AdanWidget */,
+			);
+			name = AdanWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = AdanWidgetExtension;
+			productReference = CEDBC7F22F5E90D000EC44F6 /* AdanWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +188,9 @@
 				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					CE896C3E2F5C3E3100148197 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					CEDBC7F12F5E90D000EC44F6 = {
 						CreatedOnToolsVersion = 26.3;
 					};
 				};
@@ -100,12 +210,20 @@
 			projectRoot = "";
 			targets = (
 				CE896C3E2F5C3E3100148197 /* Adan */,
+				CEDBC7F12F5E90D000EC44F6 /* AdanWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CE896C3D2F5C3E3100148197 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEDBC7F02F5E90D000EC44F6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +240,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEDBC7EE2F5E90D000EC44F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CEDBC8032F5E90D300EC44F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEDBC7F12F5E90D000EC44F6 /* AdanWidgetExtension */;
+			targetProxy = CEDBC8022F5E90D300EC44F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CE896C482F5C3E3400148197 /* Debug */ = {
@@ -306,6 +439,64 @@
 			};
 			name = Release;
 		};
+		CEDBC8072F5E90D300EC44F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AdanWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AdanWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = adan.app.Adan.AdanWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CEDBC8082F5E90D300EC44F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AdanWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AdanWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = adan.app.Adan.AdanWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -323,6 +514,15 @@
 			buildConfigurations = (
 				CE896C4B2F5C3E3400148197 /* Debug */,
 				CE896C4C2F5C3E3400148197 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEDBC8062F5E90D300EC44F6 /* Build configuration list for PBXNativeTarget "AdanWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEDBC8072F5E90D300EC44F6 /* Debug */,
+				CEDBC8082F5E90D300EC44F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
