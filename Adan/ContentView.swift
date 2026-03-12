@@ -1,12 +1,13 @@
 import SwiftUI
-
+import CoreLocation
 
 struct ContentView: View {
 
     @State private var prayers: [PrayerTime] = []
     @State private var isLoading = true
     @State private var errorMessage: String? = nil
-    
+    @State private var locationManager = LocationManager()
+
     var nextPrayer: PrayerTime? {
         prayers.first { $0.time > Date() }
     }
@@ -20,7 +21,7 @@ struct ContentView: View {
 
             if isLoading {
                 Spacer()
-                ProgressView()
+                ProgressView("Getting your location...")
                 Spacer()
             } else if let error = errorMessage {
                 Spacer()
@@ -43,16 +44,29 @@ struct ContentView: View {
                 Spacer()
             }
         }
-        .task {
-            // try network first, fall back to hardcoded
-            do {
-                prayers = try await fetchPrayerTimes(latitude: 33.5731, longitude: -7.5898)
-                isLoading = false
-            } catch {
-                // network failed — use hardcoded and save to shared storage
-                let fallback = samplePrayers()
-                savePrayersToSharedStorage(fallback)
-                prayers = fallback
+        .onAppear {
+            locationManager.requestLocation()
+        }
+        .onChange(of: locationManager.location) { _, newLocation in
+            guard let coord = newLocation else { return }
+            Task {
+                do {
+                    prayers = try await fetchPrayerTimes(
+                        latitude: coord.latitude,
+                        longitude: coord.longitude
+                    )
+                    isLoading = false
+                } catch {
+                    let fallback = samplePrayers()
+                    savePrayersToSharedStorage(fallback)
+                    prayers = fallback
+                    isLoading = false
+                }
+            }
+        }
+        .onChange(of: locationManager.status) { _, status in
+            if status == .denied || status == .restricted {
+                errorMessage = "Location access denied. Please enable it in Settings."
                 isLoading = false
             }
         }
