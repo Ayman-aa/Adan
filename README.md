@@ -18,7 +18,7 @@ A clean iOS app and widget that shows daily prayer times based on your real loca
 
 | Dark Mode | Light Mode | Widget |
 |-----------|------------|--------|
-| ![Dark](screenshots/dark.png) | ![Light](screenshots/light.png) | ![Widget](screenshots/widget.png) |
+| ![Dark](assets/dark.png) | ![Light](assests/light.png) | ![Widget](assets/widget.png) |
 
 ---
 
