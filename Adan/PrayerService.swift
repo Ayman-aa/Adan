@@ -85,3 +85,15 @@ func samplePrayers() -> [PrayerTime] {
         PrayerTime(name: "Isha",    time: t(20, 1))
     ]
 }
+
+func timeUntil(_ date: Date) -> String {
+    let diff = Int(date.timeIntervalSince(Date()))
+    guard diff > 0 else { return "" }
+    let hours = diff / 3600
+    let minutes = (diff % 3600) / 60
+    if hours > 0 {
+        return "in \(hours)h \(minutes)m"
+    } else {
+        return "in \(minutes)m"
+    }
+}

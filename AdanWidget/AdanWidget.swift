@@ -51,8 +51,8 @@ struct AdanWidgetEntryView: View {
 
                 Spacer()
 
-                Text("next prayer")
-                    .font(.caption2)
+                Text(next.time, style: .timer)
+                    .font(.caption)
                     .foregroundStyle(.tertiary)
             } else {
                 Text("No more prayers today")

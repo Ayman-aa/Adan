@@ -36,12 +36,18 @@ struct ContentView: View {
                         Text(prayer.name)
                             .fontWeight(prayer.name == nextPrayer?.name ? .bold : .regular)
                         Spacer()
-                        Text(prayer.time.formatted(date: .omitted, time: .shortened))
-                            .foregroundStyle(prayer.name == nextPrayer?.name ? .primary : .secondary)
+                        VStack(alignment: .trailing, spacing: 2) {
+                            Text(prayer.time.formatted(date: .omitted, time: .shortened))
+                                .foregroundStyle(prayer.name == nextPrayer?.name ? .primary : .secondary)
+                            if prayer.name == nextPrayer?.name {
+                                Text(timeUntil(prayer.time))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
                     }
                     .padding(.horizontal)
                 }
-                Spacer()
             }
         }
         .onAppear {
