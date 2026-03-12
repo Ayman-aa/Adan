@@ -44,12 +44,15 @@ struct ContentView: View {
             }
         }
         .task {
+            // try network first, fall back to hardcoded
             do {
-                // Casablanca coordinates
                 prayers = try await fetchPrayerTimes(latitude: 33.5731, longitude: -7.5898)
                 isLoading = false
             } catch {
-                errorMessage = "Could not load prayer times."
+                // network failed — use hardcoded and save to shared storage
+                let fallback = samplePrayers()
+                savePrayersToSharedStorage(fallback)
+                prayers = fallback
                 isLoading = false
             }
         }
